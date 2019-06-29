@@ -14,15 +14,15 @@ class MyApp extends StatelessWidget{
         appBar: AppBar(
           title: Text('Some String'),
         ),
-        body: RandomWords(),
-        // body: Card(
-        //   child: Column(
-        //     children: <Widget>[
-        //     Image.asset('assets/random-word-generator.gif'),
-        //     Text('Food Paradise'),
-        //     ],
-        //   ),
-        // ),
+        // body: RandomWords(),
+        body: Card(
+          child: Column(
+            children: <Widget>[
+            Image.asset('assets/random-word-generator.gif'),
+            Text('Food Paradise'),
+            ],
+          ),
+        ),
       )
     );
   }
