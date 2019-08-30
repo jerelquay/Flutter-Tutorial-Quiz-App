@@ -1,20 +1,60 @@
 import 'package:flutter/material.dart';
 
-import './product_manager.dart';
+import './quiz.dart';
+import './result.dart';
 
-main() {
-  runApp(MyApp());
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _MyAppState();
+  }
 }
 
-class MyApp extends StatelessWidget {
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
+
+  final _questions = [
+    {
+      'questionText': 'What\'s your favourite colour?',
+      'answers': ['Black', 'Red', 'Green', 'White']
+    },
+    {
+      'questionText': 'What\'s your favourite animal?',
+      'answers': ['Rabbit', 'Snake', 'Elephant', 'Lion'],
+    },
+    {
+      'questionText': 'What\'s your favourite food?',
+      'answers': ['Chicken Rice', 'MacDonald', 'KFC'],
+    },
+  ];
+
+  void _answerQuestion() {
+    setState(() {
+      _questionIndex = _questionIndex + 1;
+    });
+
+    if (_questionIndex < _questions.length) {
+      print('We have more questions');
+    } else {
+      print('No more questions!');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Easylist'),
+          title: Text('My First App'),
         ),
-        body: ProductManager('Food Tester'),
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex,
+                questions: _questions)
+            : Result(),
       ),
     );
   }
