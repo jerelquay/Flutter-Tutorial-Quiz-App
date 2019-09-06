@@ -1,4 +1,4 @@
-# flutter_tutorial
+# quiz_app_tutorial
 
 A new Flutter application.
 
